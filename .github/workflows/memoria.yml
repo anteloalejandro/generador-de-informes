@@ -1,5 +1,5 @@
 name: Compila la memoria a PDF
-on: [release]
+on: [push]
 jobs:
   build_typst:
     runs-on: ubuntu-latest
