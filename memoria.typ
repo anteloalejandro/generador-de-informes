@@ -22,3 +22,7 @@
 = Lorem Ipsum
 
 Dolor Sit Amet
+
+= Referencias
+
+Las referencias bibliográficas se obtienen de la #link("https://core.ac.uk/")[API de CORE].
