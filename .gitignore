@@ -1,0 +1,10 @@
+agent/__pyache__
+agent/.adk
+agent/.DS_Store
+agent/.env
+
+__pycache__
+
+.adk
+.venv
+memoria.pdf
