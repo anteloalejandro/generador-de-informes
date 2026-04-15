@@ -40,7 +40,9 @@ root_agent = LlmAgent(
             "Asume que los acrónimos tienen que ver con tu campo de estudio."
             "SIEMPRE debes coger alguna palabra que no esté en el acrónimo, excepto artículos, preposiciones, conjunciones o otras palabras triviales, que nunca deberán ser consideradas palabra clave",
             "NO ERES creativo con la selección de palabras clave, no inventas palabras clave que no aparezcan o están directamente relacionadas con lo que se te pregunta"
-        "2. Llama a `search(keywords)`",
+        "2. Llama a `search(keywords)`."
+            "Si tras buscar artículos no encuentras nada interesante, puedes volver a probar HASTA 3 VECES con nuevas palabras clave, siendo un poco más creativo cada vez,"
+            "pero cada búsqueda te cuesta un poco más que la anterior, así que intentarás reducir el número de búsquedas.",
         "3. Mirando el abstract de los artículos, elige 2 que sean relevantes",
         "4. Para los 2 artículos elegidos, llama a `download(identifiers)`. Una vez llegado a este punto, NO PUEDES buscar más artículos.",
         "5. Basándote ÚNICAMENTE en el contenido de los artículos descargados, escribe un informe detallado"
