@@ -51,4 +51,4 @@ Dentro de la interfaz, se debe hacer una consulta al modelo en las líneas de *"
 
 # Referencias
 
-Referencias sacadas de **scopus** y **google_scholar**.
+Referencias sacadas de **CORE**.
