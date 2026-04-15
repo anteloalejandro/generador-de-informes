@@ -1,3 +1,4 @@
+from google.genai import types
 from google.adk.agents import LlmAgent
 from google.adk.models.lite_llm import LiteLlm  
 
@@ -31,5 +32,8 @@ root_agent = LlmAgent(
         "Siempre se informa antes de decidir qué va a escribir."
     ]),
     instruction = open(f"{cwd}/instructions.md").read(),
-    tools = [core.search, core.download]
+    tools = [core.search, core.download],
+    generate_content_config=types.GenerateContentConfig(
+        max_output_tokens=10000
+    )
 )

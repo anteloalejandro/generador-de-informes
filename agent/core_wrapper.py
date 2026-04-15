@@ -6,7 +6,7 @@ import time
 import re
 from pypdf import PdfReader
 
-MAX_CHARS = 200000
+MAX_TOKENS = 10000
 
 class CoreWrapper:
     base_url = "https://api.core.ac.uk/v3"
@@ -66,11 +66,12 @@ class CoreWrapper:
     def download(self, identifiers: list[str]):
         documents = {}
         for identifier in identifiers:
-            documents[identifier] = (
+            text = (
                 str(self.cache[identifier])
                 if identifier in self.cache and self.cache[identifier] is not None
                 else self._download_pdf(identifier)
-            )[:MAX_CHARS]
+            )
+            documents[identifier] = " ".join(text.split()[:MAX_TOKENS//len(identifiers)])
 
         return documents
 
@@ -94,7 +95,7 @@ class CoreWrapper:
             time.sleep(5)
             max_tries -= 1
 
-        pdf = PdfReader(io.BytesIO(response.raw.read(MAX_CHARS)))
+        pdf = PdfReader(io.BytesIO(response.raw.read()))
         text = "\n\n".join([
             page.extract_text()
             for page in pdf.pages[:max_pages]
