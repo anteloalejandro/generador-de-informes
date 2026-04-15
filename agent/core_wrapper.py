@@ -6,7 +6,7 @@ import time
 import re
 from pypdf import PdfReader
 
-MAX_CHARS = 20000
+MAX_CHARS = 200000
 
 class CoreWrapper:
     base_url = "https://api.core.ac.uk/v3"
@@ -15,9 +15,11 @@ class CoreWrapper:
         self.auth_header = { "Authorization": f"Bearer {api_key}" }
         self.cache: dict[str, Any] = {}
 
-    def search(self, query: str):
+    def search(self, query: str, recent_only: bool = False):
         limit = 10
         query = f"_exists_:abstract AND fullText:{query}"
+        if recent_only:
+            query += " AND yearPublished>2020"
 
         url = f"{self.base_url}/search/works"
         params = urllib.parse.urlencode(
@@ -44,14 +46,19 @@ class CoreWrapper:
 
         results = []
         for result in data["results"]:
-            self.cache[str(result["id"])] = result["fullText"] or None
+            text = result["fullText"] if "fullText" and result["fullText"].strip() != "" in result else None
+            self.cache[str(result["id"])] = text
             # INFO: https://api.core.ac.uk/docs/v3#tag/Works
             results.append({
+                "identifier": str(result["id"]),
                 "title": result["title"],
                 "abstract": result["abstract"],
+                "words": len(result["fullText"]) if text is not None else None,
                 "doi": result["doi"],
+                "links": result["links"],
                 "citation_count": result["citationCount"],
-                "identifier": str(result["id"])
+                "published_date": result["publishedDate"],
+                "last_update_date": result["lastUpdate"] if "lastUpdate" in result else None
             })
 
         return results
