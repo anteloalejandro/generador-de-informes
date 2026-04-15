@@ -38,8 +38,5 @@ root_agent = LlmAgent(
     ]),
     instruction = open(f"{cwd}/instructions.md").read(),
     tools = [core.search, core.download, export],
-    generate_content_config=types.GenerateContentConfig(
-        max_output_tokens=10000
-    )
 )
 
