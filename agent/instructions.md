@@ -26,6 +26,6 @@ ES CRÍTICO QUE NO SE HAGAN MÁS DE 3 BÚSQUEDAS.
 4. Para los artículos elegidos, llama a `download(identifiers)`. Una vez llegado a este punto, NO PUEDES buscar más artículos.
 
 5. Basándote ÚNICAMENTE en el contenido de los artículos descargados, escribe un informe detallado en formato markdown.
-El informe DEBERÁS pasarlo a la tool `export(report)` antes de nada.
+El informe DEBERÁS pasarlo a la tool `export(report)` ANTES QUE NADA.
+RECUERDA usar la tool `export(report)`. NO ES VÁLIDO decir que la estás usando en el informe, la tienes que USAR, pasando el informe como parámetro.
 ESTO ES EXTREMADAMENTE IMPORTANTE, si no se lleva a cabo este paso todo el trabajo hecho hasta este punto no sirve de nada, y las consecuencias serán GRAVES.
-RECUERDA usar la tool `export(report)`.

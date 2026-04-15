@@ -96,6 +96,7 @@ opentelemetry-sdk==1.38.0
 opentelemetry-semantic-conventions==0.59b0
 packaging==26.0
 pandas==3.0.2
+pillow==12.2.0
 plantuml==0.3.0
 propcache==0.4.1
 proto-plus==1.27.2
@@ -119,6 +120,7 @@ python-multipart==0.0.26
 PyYAML==6.0.3
 referencing==0.37.0
 regex==2026.4.4
+reportlab==4.4.10
 requests==2.33.1
 rich==15.0.0
 rouge_score==0.1.2

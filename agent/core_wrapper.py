@@ -14,6 +14,7 @@ class CoreWrapper:
         self.api_key = api_key
         self.auth_header = { "Authorization": f"Bearer {api_key}" }
         self.cache: dict[str, Any] = {}
+        self.last_identifiers_count: int = 0
 
     def search(self, query: str, recent_only: bool = False):
         limit = 10
@@ -64,6 +65,7 @@ class CoreWrapper:
         return results
 
     def download(self, identifiers: list[str]):
+        self.last_identifiers_count = len(identifiers)
         documents = {}
         for identifier in identifiers:
             text = (
