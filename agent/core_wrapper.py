@@ -38,7 +38,6 @@ class CoreWrapper:
                 headers = headers
             )
 
-
         # INFO: https://api.core.ac.uk/docs/v3#tag/Works
         data = response.json()
 
@@ -55,12 +54,16 @@ class CoreWrapper:
 
         return results
 
-    def download(self, identifier: str):
-        if identifier in self.cache and self.cache[identifier] is not None:
-            return str(self.cache[identifier])
-        else:
-            print("no se ha podido encontrar el texto en caché: ", self.cache)
-            return self._download_pdf(identifier)
+    def download(self, identifiers: list[str]):
+        documents = {}
+        for identifier in identifiers:
+            documents[identifier] = (
+                str(self.cache[identifier])
+                if identifier in self.cache and self.cache[identifier] is not None
+                else self._download_pdf(identifier)
+            )
+
+        return documents
 
     def _download_pdf(self, identifier: str):
         max_pages = 10
@@ -92,6 +95,3 @@ class CoreWrapper:
         text = re.sub(r"\s+", " ", text)
 
         return text
-
-
-
