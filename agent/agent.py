@@ -36,7 +36,7 @@ def export(report: str):
     sections: list[dict[str, Any]] = [
         {
             "name": section.title,
-            "word_count": len((f"{section.title} {section.content}").split())
+            "word_count": len(section.dump().split())
         }
         for section in root.children
     ]
