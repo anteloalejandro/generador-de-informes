@@ -19,6 +19,11 @@ if (openai_key := os.getenv("OPENAI_API_KEY")) is None:
 cwd = os.path.dirname(os.path.abspath(__file__))
 
 core = CoreWrapper(core_key)
+
+def export(report: str):
+    with open(f"{cwd}/.output/informe.md", "w") as f:
+        f.write(report)
+
 # ------------------------
 # ROOT AGENT (multi-tool)
 # ------------------------
@@ -32,8 +37,9 @@ root_agent = LlmAgent(
         "Siempre se informa antes de decidir qué va a escribir."
     ]),
     instruction = open(f"{cwd}/instructions.md").read(),
-    tools = [core.search, core.download],
+    tools = [core.search, core.download, export],
     generate_content_config=types.GenerateContentConfig(
         max_output_tokens=10000
     )
 )
+
