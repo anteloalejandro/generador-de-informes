@@ -57,7 +57,7 @@ class CoreWrapper:
                 "doi": result["doi"],
                 "links": result["links"],
                 "citation_count": result["citationCount"],
-                "published_date": result["publishedDate"],
+                "published_date": result["publishedDate"] if "publishedDate" in result else None,
                 "last_update_date": result["lastUpdate"] if "lastUpdate" in result else None
             })
 
