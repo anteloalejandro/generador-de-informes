@@ -6,6 +6,8 @@ import time
 import re
 from pypdf import PdfReader
 
+MAX_CHARS = 20000
+
 class CoreWrapper:
     base_url = "https://api.core.ac.uk/v3"
     def __init__(self, api_key: str):
@@ -38,18 +40,18 @@ class CoreWrapper:
                 headers = headers
             )
 
-        # INFO: https://api.core.ac.uk/docs/v3#tag/Works
         data = response.json()
 
         results = []
         for result in data["results"]:
-            self.cache[result["id"]] = result["fullText"] or None
+            self.cache[str(result["id"])] = result["fullText"] or None
+            # INFO: https://api.core.ac.uk/docs/v3#tag/Works
             results.append({
                 "title": result["title"],
                 "abstract": result["abstract"],
-                "field_of_study": result["fieldOfStudy"],
+                "doi": result["doi"],
                 "citation_count": result["citationCount"],
-                "identifier": result["id"]
+                "identifier": str(result["id"])
             })
 
         return results
@@ -61,7 +63,7 @@ class CoreWrapper:
                 str(self.cache[identifier])
                 if identifier in self.cache and self.cache[identifier] is not None
                 else self._download_pdf(identifier)
-            )
+            )[:MAX_CHARS]
 
         return documents
 
@@ -85,7 +87,7 @@ class CoreWrapper:
             time.sleep(5)
             max_tries -= 1
 
-        pdf = PdfReader(io.BytesIO(response.raw.read()))
+        pdf = PdfReader(io.BytesIO(response.raw.read(MAX_CHARS)))
         text = "\n\n".join([
             page.extract_text()
             for page in pdf.pages[:max_pages]
