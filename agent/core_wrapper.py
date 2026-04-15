@@ -46,7 +46,7 @@ class CoreWrapper:
 
         results = []
         for result in data["results"]:
-            text = result["fullText"] if "fullText" and result["fullText"].strip() != "" in result else None
+            text = result["fullText"] if "fullText" in result else None
             self.cache[str(result["id"])] = text
             # INFO: https://api.core.ac.uk/docs/v3#tag/Works
             results.append({
