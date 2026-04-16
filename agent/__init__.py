@@ -1,3 +1,6 @@
-from . import agent 
+from dotenv import load_dotenv
 
-from . import model_registry
+load_dotenv()  
+
+from . import model_registry 
+from . import agent

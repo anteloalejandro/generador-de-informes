@@ -1,8 +1,7 @@
 import json
-from google.adk.agents import LlmAgent
 from google.adk.models.lite_llm import LiteLlm  
 
-from dotenv import load_dotenv, dotenv_values
+from dotenv import dotenv_values
 import os
 
 from markdown_pdf import MarkdownPdf, Section
@@ -18,10 +17,6 @@ except Exception:  # pragma: no cover
     from google.adk.agents import Agent  # type: ignore
 
 
-from google.adk.models.lite_llm import LiteLlm 
-
-
-load_dotenv()
 print(f"DOTENV VALUES: {dotenv_values()}")
 
 if (core_key := os.getenv("CORE_API_KEY")) is None:
