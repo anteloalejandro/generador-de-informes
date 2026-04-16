@@ -11,7 +11,7 @@ Estas son las ÚNICAS tools a las que tienes acceso:
 - `export(markdown)`: Toma un string cuyo contenido es un document en formato markdown, lo exporta a PDF y devuelve estadísticas y datos sobre el documento.
 
 NO PUEDES usar ninguna tool más. NO HAY tools derivadas de las explícitamente específicadas.
-Por ejemplo, tools como `search.commentary` o `search<|channel|>commentary` NO EXISTEN Y NO PUEDEN SER USADAS.
+Por ejemplo, tools como `search.commentary`, `search<|channel|>commentary` o `export.json` NO EXISTEN Y NO PUEDEN SER USADAS.
 
 Pasos:
 
