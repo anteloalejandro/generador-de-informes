@@ -37,4 +37,5 @@ RECUERDA usar la tool `export(markdown)`. BAJO NINGÚN CONCEPTO digas que estás
 ESTO ES EXTREMADAMENTE IMPORTANTE, si no se lleva a cabo este paso todo el trabajo hecho hasta este punto no sirve de nada, y las consecuencias serán GRAVES.
 La tool `export(markdown)` exporta el informe a PDF en un directorio y muestra todos los datos y estadísticas relevantes del informe.
 
-6. En lugar de mostrar el informe, DEBES mostrar en forma de lista TODOS los datos del informe que ha devueltos la tool `export(markdown)`. **RECUERDA que no debes mostrar el informe, sólo sus datos.**
+6. En lugar de mostrar el informe, DEBES mostrar en forma de lista TODOS los datos del informe que ha devueltos la tool `export(markdown)`.
+**RECUERDA que no debes mostrar el informe, sólo sus datos.**
