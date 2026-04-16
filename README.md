@@ -38,6 +38,13 @@ pip install -r requirements.txt
 Se deben introducir en el fichero `agents/.env`, que habrá que crear de antemano.
 En cada línea se pone una entrada, que tendra la forma `KEY = VALUE`
 
+```config
+# .env
+OPENAI_API_KEY=xxx
+OPENAI_API_BASE=xxx
+CORE_API_KEY=xxx
+```
+
 **4\. Habilitar `direnv` para activar entorno automáticamente (opcional)**
 ```bash
 direnv allow .

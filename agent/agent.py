@@ -25,6 +25,9 @@ if (core_key := os.getenv("CORE_API_KEY")) is None:
 if (openai_key := os.getenv("OPENAI_API_KEY")) is None:
     raise ValueError("Falta la clave de la API de OpenAI en `agents/.env` (OPENAI_API_KEY=xxx)")
 
+if (openai_base := os.getenv("OPENAI_API_BASE")) is None:
+    raise ValueError("Falta la url base de la API de OpenAI en `agents/.env` (OPENAI_API_BASE=https://aaa.bbb.ccc/)")
+
 cwd = os.path.dirname(os.path.abspath(__file__))
 
 core = CoreWrapper(core_key)
@@ -71,7 +74,7 @@ download = core.download
 
 root_agent = Agent(
     #model="gemini-3-flash-preview",
-    model=LiteLlm(model="openai/gpt-oss-120b", api_base="https://api.poligpt.upv.es/", api_key="sk-LFXs1kjaSxtEDgOMlPUOpA"),
+    model=LiteLlm(model="openai/gpt-oss-120b", api_base=openai_base, api_key=openai_key),
 
     name="root_agent",
     description = "\n".join([
