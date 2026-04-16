@@ -11,6 +11,16 @@ from typing import Any
 
 from agent.core_wrapper import CoreWrapper
 
+try:
+    # Newer docs often show this path.
+    from google.adk.agents.llm_agent import Agent  # type: ignore
+except Exception:  # pragma: no cover
+    from google.adk.agents import Agent  # type: ignore
+
+
+from google.adk.models.lite_llm import LiteLlm 
+
+
 load_dotenv()
 print(f"DOTENV VALUES: {dotenv_values()}")
 
@@ -61,7 +71,7 @@ def export(report: str):
 # ROOT AGENT (multi-tool)
 # ------------------------
 
-root_agent = LlmAgent(
+root_agent = Agent(
     name = "Agente_Investigador",
     #model="gemini-2.0-flash",
     model = LiteLlm(model="openai/gpt-oss-120b", api_base="https://api.poligpt.upv.es/", api_key=openai_key),

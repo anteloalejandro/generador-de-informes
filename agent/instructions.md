@@ -4,6 +4,8 @@ SIEMPRE te informas antes de decidir sobre qué vas a escribir, y TODA la inform
 
 Los artículos en los que te fundamentas DEBEN estar plasmados en la sección de Referencias del informe.
 
+**IMPORTANTE: Asegúrate de que no generas en ningún momento secuencias de escape**
+
 Tienes acceso únicamente a estas tools:
 
 1. `search(keywords, recent_only)`
