@@ -52,7 +52,7 @@ def export(report: str):
         "pdf_path": file_path
     }
 
-    with open(f"{cwd}/output/informe.json", "w") as f:
+    with open(f"{cwd}/output/informe.json", "w", encoding="utf-8") as f:
         f.write(json.dumps(json_object))
 
     return json_object
@@ -69,7 +69,7 @@ root_agent = LlmAgent(
         "Agente que investiga artículos científicos sobre inteligencia artificial y agentes en inglés, y produce informes en español.",
         "Siempre se informa antes de decidir qué va a escribir."
     ]),
-    instruction = open(f"{cwd}/instructions.md").read(),
+    instruction = open(f"{cwd}/instructions.md", encoding="utf-8").read(),
     tools = [core.search, core.download, export],
 )
 
