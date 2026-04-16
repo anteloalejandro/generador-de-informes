@@ -1,18 +1,19 @@
 {
   "criteria": {
+    "tool_trajectory_avg_score": 0.8,
     "rubric_based_final_response_quality_v1": {
-      "threshold": 0.6,
+      "threshold": 0.5,
       "judge_model_options": {
-        "judge_model": "openai/gpt-oss-120b", 
+        "judge_model": "openai/gpt-oss-120b",
         "num_samples": 3
       },
       "rubrics": [
         {
-          "rubric_id": "cumplimiento_instrucciones_y_formato",
+          "rubric_id": "idioma",
           "rubric_content": {
-            "text_property": "Evalúa si la respuesta incluye: título, número de secciones (ej. 5 o 6), desglose de palabras por sección, total de palabras, número de referencias y la ruta del PDF."
+            "text_property": "Evalúa si la respuesta está íntegramente en español, excluyendo términos técnicos y citaciones."
           },
-          "description": "Validación de Formato de Informe"
+          "description": "Idioma de la respuesta"
         }
       ]
     }

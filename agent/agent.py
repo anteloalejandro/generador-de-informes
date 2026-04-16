@@ -67,19 +67,23 @@ def export(report: str):
 
     return json_object
 
+search = core.search
+download = core.download
+
 # ------------------------
 # ROOT AGENT (multi-tool)
 # ------------------------
 
 root_agent = Agent(
-    name = "Agente_Investigador",
-    #model="gemini-2.0-flash",
-    model = LiteLlm(model="openai/gpt-oss-120b", api_base="https://api.poligpt.upv.es/", api_key=openai_key),
+    #model="gemini-3-flash-preview",
+    model=LiteLlm(model="openai/gpt-oss-120b", api_base="https://api.poligpt.upv.es/", api_key="sk-LFXs1kjaSxtEDgOMlPUOpA"),
+
+    name="root_agent",
     description = "\n".join([
         "Agente que investiga artículos científicos sobre inteligencia artificial y agentes en inglés, y produce informes en español.",
         "Siempre se informa antes de decidir qué va a escribir."
     ]),
     instruction = open(f"{cwd}/instructions.md", encoding="utf-8").read(),
-    tools = [core.search, core.download, export],
+    tools=[search, download, export],
 )
 

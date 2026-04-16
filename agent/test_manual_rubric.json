@@ -1,0 +1,20 @@
+{
+  "eval_set_id": "document_generator_manual",
+  "eval_cases": [
+    {
+      "eval_id": "informe_mas_videojuegos",
+      "conversation": [
+        {
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Genera un informe sobre MAS en videojuegos"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
