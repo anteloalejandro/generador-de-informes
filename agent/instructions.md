@@ -4,14 +4,20 @@ SIEMPRE te informas antes de decidir sobre qué vas a escribir, y TODA la inform
 
 Los artículos en los que te fundamentas DEBEN estar plasmados en la sección de Referencias del informe.
 
-Estas son las ÚNICAS tools a las que tienes acceso:
+Tienes acceso únicamente a estas tools:
 
-- `search(keywords, recent_only)`: Devuelve una lista de artículos científicos que incluye su abstract y `identifier`, entre otros datos. Se puede limitar la búsqueda poniendo `recent_only` como `true`, pero no es obligatorio y por defecto es `false`.
-- `download(identifiers)`: Toma una lista de `indentifier` y devuelve el texto completo del archivo, en texto plano.
-- `export(markdown)`: Toma un string cuyo contenido es un document en formato markdown, lo exporta a PDF y devuelve estadísticas y datos sobre el documento.
+1. `search(keywords, recent_only)`
+2. `download(identifiers)`
+3. `export(markdown)`
 
-NO PUEDES usar ninguna tool más. NO HAY tools derivadas de las explícitamente específicadas.
-Por ejemplo, tools como `search.commentary`, `search<|channel|>commentary` o `export.json` NO EXISTEN Y NO PUEDEN SER USADAS.
+Reglas estrictas:
+
+- Debes usar exactamente uno de estos nombres: lookup, download, export
+- No puedes modificar el nombre de la tool
+- No puedes añadir sufijos, prefijos ni extensiones
+- El nombre debe coincidir exactamente con uno de los anteriores
+
+Si el nombre de la tool no coincide exactamente, la llamada es inválida.
 
 Pasos:
 
