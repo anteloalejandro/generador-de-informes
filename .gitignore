@@ -3,6 +3,7 @@ agent/.adk
 agent/.DS_Store
 agent/.env
 agent/output
+agent/evalset*
 
 __pycache__
 

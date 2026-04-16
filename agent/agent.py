@@ -62,7 +62,7 @@ def export(report: str):
 # ------------------------
 
 root_agent = LlmAgent(
-    name = "Agente Investigador",
+    name = "Agente_Investigador",
     #model="gemini-2.0-flash",
     model = LiteLlm(model="openai/gpt-oss-120b", api_base="https://api.poligpt.upv.es/", api_key=openai_key),
     description = "\n".join([
