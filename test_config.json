@@ -1,0 +1,55 @@
+{
+  "evaluation_cases": [
+    {
+      "id": "caseb64cb8",
+      "input": "Genera un informe sobre MAS en videojuegos"
+    },
+    {
+      "id": "case83283b",
+      "input": "Genera un informe sobre MAS en videojuegos"
+    },
+    {
+      "id": "caseb5e23a",
+      "input": "Genera un informe sobre MAS en videojuegos"
+    },
+    {
+      "id": "caseadbe1c",
+      "input": "Genera un informe sobre MAS en videojuegos"
+    },
+    {
+      "id": "case7871c1",
+      "input": "Genera un informe sobre MAS en videojuegos"
+    },
+    {
+      "id": "case23588f",
+      "input": "Genera un informe sobre MAS en videojuegos"
+    },
+    {
+      "id": "case67fa00",
+      "input": "Genera un informe sobre MAS en videojuegos"
+    },
+    {
+      "id": "casea71248",
+      "input": "Genera un informe sobre MAS en videojuegos"
+    }
+  ],
+  "criteria": {
+    "tool_trajectory_avg_score": 0.9,
+    "rubric_based_final_response_quality_v1": {
+      "threshold": 0.6,
+      "judge_model_options": {
+        "judge_model": "openai/gpt-oss-120b", 
+        "num_samples": 3
+      },
+      "rubrics": [
+        {
+          "rubric_id": "cumplimiento_instrucciones_y_formato",
+          "rubric_content": {
+            "text_property": "Evalúa si la respuesta incluye: título, número de secciones (ej. 5 o 6), desglose de palabras por sección, total de palabras, número de referencias y la ruta del PDF."
+          },
+          "description": "Validación de Formato de Informe"
+        }
+      ]
+    }
+  }
+}
