@@ -32,14 +32,14 @@ cwd = os.path.dirname(os.path.abspath(__file__))
 
 core = CoreWrapper(core_key)
 
-def export(report: str):
+def export(markdown: str):
     file_path = f"{cwd}/output/informe.pdf"
     pdf = MarkdownPdf()
-    pdf.add_section(Section(report))
+    pdf.add_section(Section(markdown))
     pdf.save(file_path)
 
     tree = MarkdownTree()
-    tree.parse(report)
+    tree.parse(markdown)
     root = tree.root.children[0]
     sections: list[dict[str, Any]] = [
         {
@@ -54,7 +54,7 @@ def export(report: str):
     json_object = {
         "title": root.title,
         "sections": sections,
-        "total_words": len(report.split()),
+        "total_words": len(markdown.split()),
         "num_sections": len(sections),
         "num_references": core.last_identifiers_count,
         "pdf_path": file_path
