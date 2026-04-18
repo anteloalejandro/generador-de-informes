@@ -83,5 +83,8 @@ root_agent = Agent(
     ]),
     instruction = open(f"{cwd}/instructions.md", encoding="utf-8").read(),
     tools=[search, download, export],
+    # after_model_callback: ((Context, LlmResponse, /) -> Awaitable[LlmResponse | None] | LlmResponse | None) | list[(Context, LlmResponse, /) -> Awaitable[LlmResponse | None] | LlmResponse | None] | None = None,
+    after_model_callback = (lambda callback_context, llm_response: print(llm_response)),
+    # before_model_callback: ((Context, LlmRequest, /) -> Awaitable[LlmResponse | None] | LlmResponse | None) | list[(Context, LlmRequest, /) -> Awaitable[LlmResponse | None] | LlmResponse | None] | None = None,
+    before_model_callback = (lambda callback_context, llm_request: print(llm_request))
 )
-

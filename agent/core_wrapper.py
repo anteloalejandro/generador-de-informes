@@ -1,3 +1,4 @@
+import json
 from typing import Any
 import requests
 import urllib.parse
@@ -43,7 +44,10 @@ class CoreWrapper:
                 headers = headers
             )
 
-        data = response.json()
+        try:
+            data = response.json()
+        except requests.JSONDecodeError or json.JSONDecodeError:
+            print(f"La petición no ha devuelto JSON válido: {response.raw.read()}")
 
         results = []
         for result in data["results"]:
