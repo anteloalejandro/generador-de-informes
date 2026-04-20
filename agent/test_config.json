@@ -23,6 +23,13 @@
           }
         },
         {
+          "rubric_id": "coherencia_datos",
+          "description": "Los datos mostrados son coherentes",
+          "rubric_content": {
+            "text_property": "Evalúa si los datos mostrados son coherentes entre sí y tienen sentido."
+          }
+        },
+        {
           "rubric_id": "muestra_ruta",
           "description": "Se muestra la ruta al PDF del informe generado",
           "rubric_content": {
@@ -60,7 +67,7 @@
         {
           "rubric_id": "parametro_llamada_download",
           "rubric_content": {
-            "text_property": "La llamada a `download` se hace con de 2 a 5 *identifiers*"
+            "text_property": "La llamada a `download` se hace de 2 a 5 *identifiers*"
           }
         },
         {
