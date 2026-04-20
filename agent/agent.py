@@ -10,6 +10,8 @@ from typing import Any
 
 from agent.core_wrapper import CoreWrapper
 
+from pprint import pp as pretty_print
+
 try:
     # Newer docs often show this path.
     from google.adk.agents.llm_agent import Agent  # type: ignore
@@ -84,7 +86,7 @@ root_agent = Agent(
     instruction = open(f"{cwd}/instructions.md", encoding="utf-8").read(),
     tools=[search, download, export],
     # after_model_callback: ((Context, LlmResponse, /) -> Awaitable[LlmResponse | None] | LlmResponse | None) | list[(Context, LlmResponse, /) -> Awaitable[LlmResponse | None] | LlmResponse | None] | None = None,
-    after_model_callback = (lambda callback_context, llm_response: print(llm_response)),
+    after_model_callback = (lambda callback_context, llm_response: pretty_print(llm_response, depth = 50)),
     # before_model_callback: ((Context, LlmRequest, /) -> Awaitable[LlmResponse | None] | LlmResponse | None) | list[(Context, LlmRequest, /) -> Awaitable[LlmResponse | None] | LlmResponse | None] | None = None,
-    before_model_callback = (lambda callback_context, llm_request: print(llm_request))
+    before_model_callback = (lambda callback_context, llm_request: pretty_print(llm_request, depth = 50))
 )

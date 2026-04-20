@@ -88,6 +88,25 @@ Al Agente se le pasa en su parámetro `instruction` el contenido del archivo `ag
 
 Aún así pueden aparecer, esporádicamente, problemas puntuales como que el modelo alucine una _tool_ `search.commentary` o `search<|channel|>.commentary`, o que muestre el informe sin exportarlo, a pesar de que se ha intentado mitigar proveyendo al Agente en sus instrucciones de la lista _tools_ a las que tiene acceso, junto a los parámetros que recibe y una breve descripción.
 
+= Tests
+
+Hemos usado un Agente Juez para evaluar la calidad de las peticiones finales. El Juez evalúa los siguientes criterios de calidad de la respuesta:
+
+- Se asegura de que el texto está en español, salvo términos técnicos.
+- Se asegura de que muestra los datos del informe generado.
+- Se asegura de que muestra la ruta al PDF del informe generado.
+- Se asegura de que no muestra el informe completo.
+
+#callout(title: "Sobre los tests deterministas sin juez")[
+  Este Agente tiene dos particularidades que hace que los tests sin juez no sean particularmente útiles.
+
+  + Las respuestas finales pueden variar mucho y seguir siendo correctas, ya que el informe generado puede ser diferente cada vez si la petición no es muy específica, y por tanto los titulos de sus secciones y el conteo de palabras será diferente cada vez.
+
+  + El uso de herramientas no será particularmente similar, porque puede llamar a `search` de forma interativa.
+
+  Por esto mismo, no hemos usado tests sin juez y hemos puesto la `tool_trajectory_avg_score` a 0.
+]
+
 = Referencias
 
 Todas referencias bibliográficas del modelo se obtienen en tiempo de ejecución de la #link("https://core.ac.uk/")[*API de CORE*]: _#link("https://core.ac.uk/")_

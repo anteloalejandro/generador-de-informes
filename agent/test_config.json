@@ -1,6 +1,6 @@
 {
   "criteria": {
-    "tool_trajectory_avg_score": 0.8,
+    "tool_trajectory_avg_score": 0.0,
     "rubric_based_final_response_quality_v1": {
       "threshold": 0.5,
       "judge_model_options": {
@@ -10,10 +10,31 @@
       "rubrics": [
         {
           "rubric_id": "idioma",
+          "description": "Idioma de la respuesta",
           "rubric_content": {
             "text_property": "Evalúa si la respuesta está íntegramente en español, excluyendo términos técnicos y citaciones."
-          },
-          "description": "Idioma de la respuesta"
+          }
+        },
+        {
+          "rubric_id": "muestra_datos",
+          "description": "Se muestran los datos del informe",
+          "rubric_content": {
+            "text_property": "Evalúa si se muestran datos sobre el informe, como el conteo de palabras por sección y el nombre de las diferentes secciones"
+          }
+        },
+        {
+          "rubric_id": "muestra_ruta",
+          "description": "Se muestra la ruta al PDF del informe generado",
+          "rubric_content": {
+            "text_property": "Evalúa si se muestra la ruta absoluta al PDF del informe generado"
+          }
+        },
+        {
+          "rubric_id": "no_muestra_informe",
+          "description": "No se debe mostrar el informe",
+          "rubric_content": {
+            "text_property": "Asegúrate de que el informe generado no se muestra en la respuesta final, pero sí sus datos"
+          }
         }
       ]
     }
