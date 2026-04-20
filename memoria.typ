@@ -6,7 +6,7 @@
 
 #show: ilm.with(
   title: "Arquitectura del Agente Generador de Informes",
-  authors: ("Alejandro Antelo Fashoro", "Pau"),
+  authors: ("Alejandro Antelo Fashoro", "Pau Riera Ribes"),
   date: datetime.today(),
   date-format: "[day] / [month] / [year repr:full]",
   raw-text: "use-typst-default",
