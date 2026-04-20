@@ -26,7 +26,7 @@
           "rubric_id": "coherencia_datos",
           "description": "Los datos mostrados son coherentes",
           "rubric_content": {
-            "text_property": "Evalúa si los datos mostrados son coherentes entre sí y tienen sentido."
+            "text_property": "Evalúa si los datos mostrados son coherentes entre sí y tienen sentido. Ten en cuenta que total_words incluye las palabras encontradas en el título del informe."
           }
         },
         {
@@ -67,7 +67,7 @@
         {
           "rubric_id": "parametro_llamada_download",
           "rubric_content": {
-            "text_property": "La llamada a `download` se hace de 2 a 5 *identifiers*"
+            "text_property": "La llamada a `download` se hace con entre 2 y 5 *identifiers*"
           }
         },
         {
