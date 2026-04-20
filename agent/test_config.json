@@ -12,7 +12,7 @@
           "rubric_id": "idioma",
           "description": "Idioma de la respuesta",
           "rubric_content": {
-            "text_property": "Evalúa si la respuesta está íntegramente en español, excluyendo términos técnicos y citaciones."
+            "text_property": "Evalúa si la respuesta final está íntegramente en español, excluyendo términos técnicos y citaciones."
           }
         },
         {

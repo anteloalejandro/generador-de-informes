@@ -12,7 +12,7 @@ Tienes acceso únicamente a estas tools:
 
 Reglas estrictas:
 
-- Debes usar exactamente uno de estos nombres: lookup, download, export
+- Debes usar exactamente uno de estos nombres: search, download, export
 - No puedes modificar el nombre de la tool
 - No puedes añadir sufijos, prefijos ni extensiones
 - El nombre debe coincidir exactamente con uno de los anteriores
