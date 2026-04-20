@@ -2,7 +2,7 @@
   "criteria": {
     "tool_trajectory_avg_score": 0.0,
     "rubric_based_final_response_quality_v1": {
-      "threshold": 0.5,
+      "threshold": 1.0,
       "judge_model_options": {
         "judge_model": "openai/gpt-oss-120b",
         "num_samples": 3
@@ -34,6 +34,45 @@
           "description": "No se debe mostrar el informe",
           "rubric_content": {
             "text_property": "Asegúrate de que el informe generado no se muestra en la respuesta final, pero sí sus datos"
+          }
+        }
+      ]
+    },
+    "rubric_based_tool_use_quality_v1": {
+      "threshold": 1.0,
+      "judge_model_options": {
+        "judge_model": "openai/gpt-oss-120b",
+        "num_samples": 3
+      },
+      "rubrics": [
+        {
+          "rubric_id": "llamada_export",
+          "rubric_content": {
+            "text_property": "La última llamada que se hace es a la tool `export`"
+          }
+        },
+        {
+          "rubric_id": "llamada_download",
+          "rubric_content": {
+            "text_property": "Antes de llamar a `export`, se llama a la tool `download`"
+          }
+        },
+        {
+          "rubric_id": "parametro_llamada_download",
+          "rubric_content": {
+            "text_property": "La llamada a `download` se hace con de 2 a 5 *identifiers*"
+          }
+        },
+        {
+          "rubric_id": "llamada_search",
+          "rubric_content": {
+            "text_property": "La primera llamada que se hace es a la tool `search`"
+          }
+        },
+        {
+          "rubric_id": "limite_llamadas_search",
+          "rubric_content": {
+            "text_property": "Se llama a la tool `search` 3 veces o menos"
           }
         }
       ]

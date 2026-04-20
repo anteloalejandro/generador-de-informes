@@ -92,10 +92,10 @@ Aún así pueden aparecer, esporádicamente, problemas puntuales como que el mod
 
 Hemos usado un Agente Juez para evaluar la calidad de las peticiones finales. El Juez evalúa los siguientes criterios de calidad de la respuesta:
 
-- Se asegura de que el texto está en español, salvo términos técnicos.
-- Se asegura de que muestra los datos del informe generado.
-- Se asegura de que muestra la ruta al PDF del informe generado.
-- Se asegura de que no muestra el informe completo.
+- El texto está en español, salvo términos técnicos.
+- Se muestran los datos del informe generado.
+- Se muestra la ruta al PDF del informe generado.
+- Se asegura de que no muestra el informe completo, pero sí sus datos.
 
 #callout(title: "Sobre los tests deterministas sin juez")[
   Este Agente tiene dos particularidades que hace que los tests sin juez no sean particularmente útiles.
@@ -106,6 +106,14 @@ Hemos usado un Agente Juez para evaluar la calidad de las peticiones finales. El
 
   Por esto mismo, no hemos usado tests sin juez y hemos puesto la `tool_trajectory_avg_score` a 0.
 ]
+
+También se ha usado a otro Agente Juez que evalúa el uso de las llamadas a las _tools_, con los siguientes criterios:
+
+- La última llamada que se hace es a `export`
+- La llamada anterior a `export` es `download`
+- La llamada a `download` se hace entre 2 y 5 _identifiers_
+- La primera llamada es `search`
+- No se llama a `search` más de 3 veces
 
 = Referencias
 
