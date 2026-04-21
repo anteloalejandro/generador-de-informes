@@ -21,7 +21,7 @@
 
 = Introducción
 
-Este Agente generador de informes genera está pensado para generar informes sobre "MAS en videojuegos".
+Este Agente generador de informes está pensado para generar informes sobre "MAS en videojuegos".
 
 Con este fin, se ha creado un agente con *acceso a internet* que puede buscar artículos científicos relevantes para su propósito.
 
@@ -30,7 +30,7 @@ Con este fin, se ha creado un agente con *acceso a internet* que puede buscar ar
 El agente cuenta con 3 _tools_:
 
 - ```python search(keywords: str, recent_only: bool)```
-- ```python download(intentifer: str)```
+- ```python download(identifers: list[str])```
 - ```python export(markdown: str)```
 
 `search` y `download` son métodos de la clase `CoreWrapper`, que abstrae la complejidad de interactuar con la API REST de #link("https://core.ac.uk/")[CORE].
