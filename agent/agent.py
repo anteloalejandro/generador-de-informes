@@ -36,6 +36,10 @@ cwd = os.path.dirname(os.path.abspath(__file__))
 core = CoreWrapper(core_key)
 
 def extract_plaintext(node: MarkdownNode, out: str = ""):
+    """
+    Saca el texto plano (es decir, sin las marcas de Markdown) de un `MarkdownNode`,
+    de forma recursiva
+    """
     out += f"{node.title}\n{" ".join(node.content)}\n"
     for child in node.children:
         out += extract_plaintext(child)
@@ -43,14 +47,17 @@ def extract_plaintext(node: MarkdownNode, out: str = ""):
     return out
 
 def export(markdown: str):
+    """
+    Hace la exportación de markdown a PDF y devuelve las estadísticas del fichero
+    """
     file_path = f"{cwd}/output/informe.pdf"
     pdf = MarkdownPdf()
-    pdf.add_section(Section(markdown))
-    pdf.save(file_path)
+    pdf.add_section(Section(markdown)) # genera PDF
+    pdf.save(file_path) # guarda PDF
 
     tree = MarkdownTree()
     tree.parse(markdown)
-    root: MarkdownNode = tree.root.children[0] # skip ROOT
+    root: MarkdownNode = tree.root.children[0] # saltar el nodo 'ROOT'
     sections: list[dict[str, Any]] = [
         {
             "name": section.title,
@@ -68,12 +75,15 @@ def export(markdown: str):
     json_object = {
         "title": root.title,
         "sections": sections,
+        # La cantidad total de palabras es mayor que la suma de las palabras
+        # de las secciones porque se incluye el título del documento y el texto bajo él
         "total_words": len(root.title.split()) + total_words,
         "num_sections": len(sections),
         "num_references": core.last_identifiers_count,
         "pdf_path": file_path
     }
 
+    # Guarda también el JSON, por si acaso
     with open(f"{cwd}/output/informe.json", "w", encoding="utf-8") as f:
         f.write(json.dumps(json_object))
 

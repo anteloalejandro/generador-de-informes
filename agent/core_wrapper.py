@@ -9,6 +9,8 @@ from pypdf import PdfReader
 
 MAX_TOKENS = 10000
 
+# INFO: https://api.core.ac.uk/docs/v3
+
 class CoreWrapper:
     base_url = "https://api.core.ac.uk/v3"
     def __init__(self, api_key: str):
@@ -18,7 +20,11 @@ class CoreWrapper:
         self.last_identifiers_count: int = 0
 
     def search(self, query: str, recent_only: bool = False):
+        """
+        Busca en la API de CORE
+        """
         limit = 10
+        # busca sólo resultados que incluyan un abstract y en los que aparezca la query
         query = f"_exists_:abstract AND fullText:{query}"
         if recent_only:
             query += " AND yearPublished>2020"
@@ -35,6 +41,7 @@ class CoreWrapper:
             headers = headers
         )
 
+        # reintenta reiteradamente hasta que funciona, porque a veces suelta error.
         while response.status_code != 200:
             print("fallo en la petición, reintentando en 5s...")
             time.sleep(5)
@@ -49,6 +56,7 @@ class CoreWrapper:
         except requests.JSONDecodeError or json.JSONDecodeError:
             print(f"La petición no ha devuelto JSON válido: {response.raw.read()}")
 
+        # filtra dict generado para que el modelo de IA no se líe
         results = []
         for result in data["results"]:
             text = result["fullText"] if "fullText" in result else None
@@ -69,6 +77,10 @@ class CoreWrapper:
         return results
 
     def download(self, identifiers: list[str]):
+        """
+        Descarga el contenido de un artículo según su identifier.
+        Si está en caché, lo coge de ahí, si no, descarga y parsea un PDF.
+        """
         self.last_identifiers_count = len(identifiers)
         documents = {}
         for identifier in identifiers:
@@ -82,6 +94,9 @@ class CoreWrapper:
         return documents
 
     def _download_pdf(self, identifier: str):
+        """
+        Descarga y parsea un PDF.
+        """
         max_pages = 10
         max_tries = 10
 
