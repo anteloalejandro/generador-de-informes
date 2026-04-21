@@ -111,7 +111,7 @@ También se ha usado a otro Agente Juez que evalúa el uso de las llamadas a las
 
 - La última llamada que se hace es a `export`
 - La llamada anterior a `export` es `download`
-- La llamada a `download` se hace entre 2 y 5 _identifiers_
+- La llamada a `download` se hace con entre 2 y 5 _identifiers_
 - La primera llamada es `search`
 - No se llama a `search` más de 3 veces
 

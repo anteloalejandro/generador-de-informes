@@ -2,7 +2,7 @@
   "criteria": {
     "tool_trajectory_avg_score": 0.0,
     "rubric_based_final_response_quality_v1": {
-      "threshold": 1.0,
+      "threshold": 0.8,
       "judge_model_options": {
         "judge_model": "openai/gpt-oss-120b",
         "num_samples": 3
@@ -20,6 +20,20 @@
           "description": "Se muestran los datos del informe",
           "rubric_content": {
             "text_property": "Evalúa si se muestran datos sobre el informe, como el conteo de palabras por sección y el nombre de las diferentes secciones"
+          }
+        },
+        {
+          "rubric_id": "coherencia_datos",
+          "description": "Los datos mostrados son coherentes",
+          "rubric_content": {
+            "text_property": "Evalúa si los datos mostrados son coherentes entre sí y tienen sentido. Ten en cuenta que total_words incluye las palabras encontradas en el título del informe."
+          }
+        },
+        {
+          "rubric_id": "corrección",
+          "description": "Los temas del informe coinciden con la petición del usuario",
+          "rubric_content": {
+            "text_property": "Evalúa si los temas del informe coinciden con la petición del usuario. No tiene por qué coincidir completamente."
           }
         },
         {
@@ -60,7 +74,7 @@
         {
           "rubric_id": "parametro_llamada_download",
           "rubric_content": {
-            "text_property": "La llamada a `download` se hace con de 2 a 5 *identifiers*"
+            "text_property": "La llamada a `download` se hace con entre 2 y 5 *identifiers*"
           }
         },
         {

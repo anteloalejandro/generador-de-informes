@@ -1,3 +1,4 @@
+from markdown_parser import MarkdownNode
 import json
 from google.adk.models.lite_llm import LiteLlm  
 
@@ -34,6 +35,13 @@ cwd = os.path.dirname(os.path.abspath(__file__))
 
 core = CoreWrapper(core_key)
 
+def extract_plaintext(node: MarkdownNode, out: str = ""):
+    out += f"{node.title}\n{" ".join(node.content)}\n"
+    for child in node.children:
+        out += extract_plaintext(child)
+
+    return out
+
 def export(markdown: str):
     file_path = f"{cwd}/output/informe.pdf"
     pdf = MarkdownPdf()
@@ -42,21 +50,25 @@ def export(markdown: str):
 
     tree = MarkdownTree()
     tree.parse(markdown)
-    root = tree.root.children[0]
+    root: MarkdownNode = tree.root.children[0] # skip ROOT
     sections: list[dict[str, Any]] = [
         {
             "name": section.title,
-            "word_count": len(section.dump().split())
+            "word_count": len(extract_plaintext(section))
         }
         for section in root.children
     ]
+
+    total_words = 0
+    for section in sections:
+        total_words += section["word_count"]
 
     root.print_tree()
 
     json_object = {
         "title": root.title,
         "sections": sections,
-        "total_words": len(markdown.split()),
+        "total_words": len(root.title.split()) + total_words,
         "num_sections": len(sections),
         "num_references": core.last_identifiers_count,
         "pdf_path": file_path
