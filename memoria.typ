@@ -96,6 +96,7 @@ Hemos usado un Agente Juez para evaluar la calidad de las peticiones finales. El
 - Se muestran los datos del informe generado.
 - Se muestra la ruta al PDF del informe generado.
 - Se asegura de que no muestra el informe completo, pero sí sus datos.
+- Los temas del informe coinciden con la consulta del usuario.
 
 #callout(title: "Sobre los tests deterministas sin juez")[
   Este Agente tiene dos particularidades que hace que los tests sin juez no sean particularmente útiles.
